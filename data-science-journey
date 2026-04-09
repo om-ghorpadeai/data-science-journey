@@ -1,0 +1,27 @@
+# Day 4 - Sorting and Ranking
+
+import pandas as pd
+
+df = pd.read_csv("students.csv")
+
+print("Full Data:\n")
+print(df)
+
+# Sort by Marks (Low to High)
+print("\nSorted by Marks (Ascending):\n")
+print(df.sort_values("Marks"))
+
+# Sort by Marks (High to Low)
+print("\nSorted by Marks (Descending):\n")
+print(df.sort_values("Marks", ascending=False))
+
+# Top 3 students
+print("\nTop 3 Students:\n")
+top_students = df.sort_values("Marks", ascending=False).head(3)
+print(top_students)
+
+# Add Rank column
+df["Rank"] = df["Marks"].rank(ascending=False)
+
+print("\nData with Rank:\n")
+print(df)
